@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import WentWell from "./components/WentWell";
+import ToImprove from "./components/ToImprove";
+import ActionItems from "./components/ActionItems";
+import RetroCard from "./components/RetroCard";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main class="content row">
+        <h1>Retro Board</h1>
+        <div>
+          Layout &nbsp;<button class="button button-default">Column</button>
+        </div>
+
+        <div class="RetroApp row">
+          <WentWell>
+            <RetroCard />
+          </WentWell>
+          <ToImprove>
+            <RetroCard />
+          </ToImprove>
+          <ActionItems>
+            <RetroCard />
+          </ActionItems>
+        </div>
+      </main>
     </div>
   );
 }
