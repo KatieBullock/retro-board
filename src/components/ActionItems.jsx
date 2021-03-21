@@ -7,6 +7,8 @@ const ActionItems = (props) => {
         class="ButtonAdd button button-default"
         aria-label="Add to new card"
         title="Add to new card"
+        name="actionItems"
+        onClick={props.newItem}
       >
         +
       </button>

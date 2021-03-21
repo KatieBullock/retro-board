@@ -1,4 +1,4 @@
-const RetroCard = () => {
+const RetroCard = (props) => {
   return (
     <div class="RetroCard" aria-label="Retro card">
       <textarea
@@ -6,15 +6,20 @@ const RetroCard = () => {
         placeholder="Enter text here"
         aria-label="Enter text here"
         rows="1"
-      >
-        Here is an example card
-      </textarea>
+        value={props.item}
+        onChange={(e) => props.updateItem(e.target.value, props.index)}
+      />
 
       <div class="button-group">
         <button type="button" class="button button-left" title="Move left">
           <img src="angleLeft.svg" alt="Move left" width="12" height="12" />
         </button>
-        <button type="button" class="button button-delete" title="Delete">
+        <button
+          type="button"
+          class="button button-delete"
+          title="Delete"
+          onClick={() => props.deleteItem(props.index)}
+        >
           <img src="timesCircle.svg" alt="Delete" width="12" height="12" />
         </button>
         <div>
