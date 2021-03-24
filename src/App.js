@@ -66,13 +66,13 @@ function App() {
 
   return (
     <div className="App">
-      <main class="content row">
+      <main className="content row">
         <h1>Retro Board</h1>
         <div>
-          Layout &nbsp;<button class="button button-default">Column</button>
+          Layout &nbsp;<button className="button button-default">Column</button>
         </div>
 
-        <div class="RetroApp row">
+        <div className="RetroApp row">
           <WentWell addItem={addItem().wentWell}>
             {wentWell.map((item, index) => {
               return (
