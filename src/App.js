@@ -10,26 +10,58 @@ function App() {
   const [toImprove, setToImprove] = useState(["Work on useState"]);
   const [actionItems, setActionItems] = useState(["Finish project"]);
 
-  const newItem = (e) => {
-    if (e.target.name === "wentWell") {
-      setWentWell([...wentWell, ""]);
-    } else if (e.target.name === "toImprove") {
-      setToImprove([...toImprove, ""]);
-    } else if (e.target.name === "actionItems") {
-      setActionItems([...actionItems, ""]);
-    }
+  const addItem = () => {
+    return {
+      wentWell: () => {
+        setWentWell([...wentWell, ""]);
+      },
+      toImprove: () => {
+        setToImprove([...toImprove, ""]);
+      },
+      actionItems: () => {
+        setActionItems([...actionItems, ""]);
+      },
+    };
   };
 
-  const updateItem = (userInput, index) => {
-    const newWentWell = [...wentWell];
-    newWentWell[index] = userInput;
-    setWentWell(newWentWell);
+  const updateItem = () => {
+    return {
+      wentWell: (userInput, index) => {
+        const newWentWell = [...wentWell];
+        newWentWell[index] = userInput;
+        setWentWell(newWentWell);
+      },
+      toImprove: (userInput, index) => {
+        const newToImprove = [...toImprove];
+        newToImprove[index] = userInput;
+        setToImprove(newToImprove);
+      },
+      actionItems: (userInput, index) => {
+        const newActionItem = [...actionItems];
+        newActionItem[index] = userInput;
+        setActionItems(newActionItem);
+      },
+    };
   };
 
-  const deleteItem = (index) => {
-    setWentWell(
-      wentWell.filter((item, currentIndex) => currentIndex !== index)
-    );
+  const deleteItem = () => {
+    return {
+      wentWell: (index) => {
+        setWentWell(
+          wentWell.filter((item, currentIndex) => currentIndex !== index)
+        );
+      },
+      toImprove: (index) => {
+        setToImprove(
+          toImprove.filter((item, currentIndex) => currentIndex !== index)
+        );
+      },
+      actionItems: (index) => {
+        setActionItems(
+          actionItems.filter((item, currentIndex) => currentIndex !== index)
+        );
+      },
+    };
   };
 
   return (
@@ -41,43 +73,43 @@ function App() {
         </div>
 
         <div class="RetroApp row">
-          <WentWell newItem={newItem}>
+          <WentWell addItem={addItem().wentWell}>
             {wentWell.map((item, index) => {
               return (
                 <div key={`went-well-item-${index}`}>
                   <RetroCard
                     item={item}
                     index={index}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
+                    deleteItem={deleteItem().wentWell}
+                    updateItem={updateItem().wentWell}
                   />
                 </div>
               );
             })}
           </WentWell>
-          <ToImprove newItem={newItem}>
+          <ToImprove addItem={addItem().toImprove}>
             {toImprove.map((item, index) => {
               return (
                 <div key={`to-improve-item-${index}`}>
                   <RetroCard
                     item={item}
                     index={index}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
+                    deleteItem={deleteItem().toImprove}
+                    updateItem={updateItem().toImprove}
                   />
                 </div>
               );
             })}
           </ToImprove>
-          <ActionItems newItem={newItem}>
+          <ActionItems addItem={addItem().actionItems}>
             {actionItems.map((item, index) => {
               return (
                 <div key={`action-item-${index}`}>
                   <RetroCard
                     item={item}
                     index={index}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
+                    deleteItem={deleteItem().actionItems}
+                    updateItem={updateItem().actionItems}
                   />
                 </div>
               );
