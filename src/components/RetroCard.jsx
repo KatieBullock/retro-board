@@ -1,3 +1,12 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faTimesCircle,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
+
 const RetroCard = (props) => {
   return (
     <div className="RetroCard" aria-label="Retro card">
@@ -12,7 +21,7 @@ const RetroCard = (props) => {
 
       <div className="button-group">
         <button type="button" className="button button-left" title="Move left">
-          <img src="angleLeft.svg" alt="Move left" width="12" height="12" />
+          <FontAwesomeIcon icon={faAngleLeft} />
         </button>
         <button
           type="button"
@@ -20,23 +29,23 @@ const RetroCard = (props) => {
           title="Delete"
           onClick={() => props.deleteItem(props.index)}
         >
-          <img src="timesCircle.svg" alt="Delete" width="12" height="12" />
+          <FontAwesomeIcon icon={faTimesCircle} /> Delete
         </button>
         <div>
-          <button type="button" className="button button-left" title="Like">
-            <img src="thumbsUp.svg" alt="Like" width="12" height="12" />5
+          <button type="button" className="button" title="Like">
+            <FontAwesomeIcon icon={faThumbsUp} /> 5
           </button>
-          <button type="button" className="button button-left" title="Dislike">
-            <img src="thumbsDown.svg" alt="Dislike" width="12" height="12" />0
-          </button>
-          <button
-            type="button"
-            className="button button-right"
-            title="Move right"
-          >
-            <img src="angleRight.svg" alt="Move right" width="12" height="12" />
+          <button type="button" className="button" title="Dislike">
+            <FontAwesomeIcon icon={faThumbsDown} /> 0
           </button>
         </div>
+        <button
+          type="button"
+          className="button button-right"
+          title="Move right"
+        >
+          <FontAwesomeIcon icon={faAngleRight} />
+        </button>
       </div>
     </div>
   );

@@ -100,8 +100,8 @@ html {
 .RetroCard .button {
   background: transparent;
   opacity: 0.65;
-  font-size: 0.75rem;
-  padding: 0.25rem;
+  font-size: 0.8rem;
+  padding: 0.3rem;
 }
 .RetroCard .button:hover {
   opacity: 1;
