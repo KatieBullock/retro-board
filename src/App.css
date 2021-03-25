@@ -79,6 +79,18 @@ html {
 .RetroCategory {
   flex: 1 1;
 }
+.RetroCategory-1 .category-color {
+  margin-left: 0.5rem;
+  color: #019588;
+}
+.RetroCategory-2 .category-color {
+  margin-left: 0.5rem;
+  color: #e91e63;
+}
+.RetroCategory-3 .category-color {
+  margin-left: 0.5rem;
+  color: #9c28b0;
+}
 .ButtonAdd {
   width: 100%;
   margin-bottom: 0.5rem;
