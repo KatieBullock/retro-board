@@ -6,9 +6,9 @@ import ActionItems from "./components/ActionItems";
 import RetroCard from "./components/RetroCard";
 
 function App() {
-  const [wentWell, setWentWell] = useState(["Set up project with React"]);
-  const [toImprove, setToImprove] = useState(["Work on useState"]);
-  const [actionItems, setActionItems] = useState(["Finish project"]);
+  const [wentWell, setWentWell] = useState([]);
+  const [toImprove, setToImprove] = useState([]);
+  const [actionItems, setActionItems] = useState([]);
 
   const addItem = () => {
     return {
@@ -65,67 +65,35 @@ function App() {
   };
 
   const moveItemRight = () => {
-    let movedItem;
     return {
       wentWell: (index) => {
-        setWentWell(
-          wentWell.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setToImprove([...toImprove, movedItem]);
+        deleteItem().wentWell(index);
+        setToImprove([...toImprove, wentWell[index]]);
       },
       toImprove: (index) => {
-        setToImprove(
-          toImprove.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setActionItems([...actionItems, movedItem]);
+        deleteItem().toImprove(index);
+        setActionItems([...actionItems, toImprove[index]]);
       },
       actionItems: (index) => {
-        setActionItems(
-          actionItems.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setWentWell([...wentWell, movedItem]);
+        deleteItem().actionItems(index);
+        setWentWell([...wentWell, actionItems[index]]);
       },
     };
   };
 
   const moveItemLeft = () => {
-    let movedItem;
     return {
       wentWell: (index) => {
-        setWentWell(
-          wentWell.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setActionItems([...actionItems, movedItem]);
+        deleteItem().wentWell(index);
+        setActionItems([...actionItems, wentWell[index]]);
       },
       toImprove: (index) => {
-        setToImprove(
-          toImprove.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setWentWell([...wentWell, movedItem]);
+        deleteItem().toImprove(index);
+        setWentWell([...wentWell, toImprove[index]]);
       },
       actionItems: (index) => {
-        setActionItems(
-          actionItems.filter((item, currentIndex) => {
-            movedItem = item;
-            return currentIndex !== index;
-          })
-        );
-        setToImprove([...toImprove, movedItem]);
+        deleteItem().actionItems(index);
+        setToImprove([...toImprove, actionItems[index]]);
       },
     };
   };
