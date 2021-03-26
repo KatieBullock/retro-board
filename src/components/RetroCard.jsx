@@ -20,7 +20,12 @@ const RetroCard = (props) => {
       />
 
       <div className="button-group">
-        <button type="button" className="button button-left" title="Move left">
+        <button
+          type="button"
+          className="button button-left"
+          title="Move left"
+          onClick={() => props.moveItemLeft(props.index)}
+        >
           <FontAwesomeIcon icon={faAngleLeft} />
         </button>
         <button
@@ -43,6 +48,7 @@ const RetroCard = (props) => {
           type="button"
           className="button button-right"
           title="Move right"
+          onClick={() => props.moveItemRight(props.index)}
         >
           <FontAwesomeIcon icon={faAngleRight} />
         </button>

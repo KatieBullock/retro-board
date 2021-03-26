@@ -64,6 +64,72 @@ function App() {
     };
   };
 
+  const moveItemRight = () => {
+    let movedItem;
+    return {
+      wentWell: (index) => {
+        setWentWell(
+          wentWell.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setToImprove([...toImprove, movedItem]);
+      },
+      toImprove: (index) => {
+        setToImprove(
+          toImprove.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setActionItems([...actionItems, movedItem]);
+      },
+      actionItems: (index) => {
+        setActionItems(
+          actionItems.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setWentWell([...wentWell, movedItem]);
+      },
+    };
+  };
+
+  const moveItemLeft = () => {
+    let movedItem;
+    return {
+      wentWell: (index) => {
+        setWentWell(
+          wentWell.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setActionItems([...actionItems, movedItem]);
+      },
+      toImprove: (index) => {
+        setToImprove(
+          toImprove.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setWentWell([...wentWell, movedItem]);
+      },
+      actionItems: (index) => {
+        setActionItems(
+          actionItems.filter((item, currentIndex) => {
+            movedItem = item;
+            return currentIndex !== index;
+          })
+        );
+        setToImprove([...toImprove, movedItem]);
+      },
+    };
+  };
+
   return (
     <div className="App">
       <main className="content row">
@@ -82,6 +148,8 @@ function App() {
                     index={index}
                     deleteItem={deleteItem().wentWell}
                     updateItem={updateItem().wentWell}
+                    moveItemRight={moveItemRight().wentWell}
+                    moveItemLeft={moveItemLeft().wentWell}
                   />
                 </div>
               );
@@ -96,6 +164,8 @@ function App() {
                     index={index}
                     deleteItem={deleteItem().toImprove}
                     updateItem={updateItem().toImprove}
+                    moveItemRight={moveItemRight().toImprove}
+                    moveItemLeft={moveItemLeft().toImprove}
                   />
                 </div>
               );
@@ -110,6 +180,8 @@ function App() {
                     index={index}
                     deleteItem={deleteItem().actionItems}
                     updateItem={updateItem().actionItems}
+                    moveItemRight={moveItemRight().actionItems}
+                    moveItemLeft={moveItemLeft().actionItems}
                   />
                 </div>
               );

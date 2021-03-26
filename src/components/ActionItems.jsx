@@ -5,8 +5,8 @@ const ActionItems = (props) => {
   return (
     <div className="RetroCategory RetroCategory-3">
       <h2>
-        Action Items
         <FontAwesomeIcon icon={faSquare} className="category-color" />
+        Action Items
       </h2>
       <button
         type="button"

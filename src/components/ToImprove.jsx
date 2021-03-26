@@ -5,8 +5,8 @@ const ToImprove = (props) => {
   return (
     <div className="RetroCategory RetroCategory-2">
       <h2>
-        To Improve
         <FontAwesomeIcon icon={faSquare} className="category-color" />
+        To Improve
       </h2>
       <button
         type="button"
