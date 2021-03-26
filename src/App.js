@@ -9,17 +9,21 @@ function App() {
   const [wentWell, setWentWell] = useState([]);
   const [toImprove, setToImprove] = useState([]);
   const [actionItems, setActionItems] = useState([]);
+  const [focus, setFocus] = useState(false);
 
   const addItem = () => {
     return {
       wentWell: () => {
         setWentWell([...wentWell, ""]);
+        setFocus(true);
       },
       toImprove: () => {
         setToImprove([...toImprove, ""]);
+        setFocus(true);
       },
       actionItems: () => {
         setActionItems([...actionItems, ""]);
+        setFocus(true);
       },
     };
   };
@@ -69,14 +73,17 @@ function App() {
       wentWell: (index) => {
         deleteItem().wentWell(index);
         setToImprove([...toImprove, wentWell[index]]);
+        setFocus(false);
       },
       toImprove: (index) => {
         deleteItem().toImprove(index);
         setActionItems([...actionItems, toImprove[index]]);
+        setFocus(false);
       },
       actionItems: (index) => {
         deleteItem().actionItems(index);
         setWentWell([...wentWell, actionItems[index]]);
+        setFocus(false);
       },
     };
   };
@@ -86,14 +93,17 @@ function App() {
       wentWell: (index) => {
         deleteItem().wentWell(index);
         setActionItems([...actionItems, wentWell[index]]);
+        setFocus(false);
       },
       toImprove: (index) => {
         deleteItem().toImprove(index);
         setWentWell([...wentWell, toImprove[index]]);
+        setFocus(false);
       },
       actionItems: (index) => {
         deleteItem().actionItems(index);
         setToImprove([...toImprove, actionItems[index]]);
+        setFocus(false);
       },
     };
   };
@@ -114,6 +124,7 @@ function App() {
                   <RetroCard
                     item={item}
                     index={index}
+                    focus={focus}
                     deleteItem={deleteItem().wentWell}
                     updateItem={updateItem().wentWell}
                     moveItemRight={moveItemRight().wentWell}
@@ -130,6 +141,7 @@ function App() {
                   <RetroCard
                     item={item}
                     index={index}
+                    focus={focus}
                     deleteItem={deleteItem().toImprove}
                     updateItem={updateItem().toImprove}
                     moveItemRight={moveItemRight().toImprove}
@@ -146,6 +158,7 @@ function App() {
                   <RetroCard
                     item={item}
                     index={index}
+                    focus={focus}
                     deleteItem={deleteItem().actionItems}
                     updateItem={updateItem().actionItems}
                     moveItemRight={moveItemRight().actionItems}

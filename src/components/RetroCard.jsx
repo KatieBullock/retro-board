@@ -15,7 +15,7 @@ const RetroCard = (props) => {
         placeholder="Enter text here"
         aria-label="Enter text here"
         rows="1"
-        autoFocus={true}
+        autoFocus={props.focus}
         value={props.item}
         onChange={(e) => props.updateItem(e.target.value, props.index)}
         onBlur={(e) => {
