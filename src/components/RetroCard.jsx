@@ -15,8 +15,14 @@ const RetroCard = (props) => {
         placeholder="Enter text here"
         aria-label="Enter text here"
         rows="1"
+        autoFocus={true}
         value={props.item}
         onChange={(e) => props.updateItem(e.target.value, props.index)}
+        onBlur={(e) => {
+          if (e.target.value === "") {
+            props.deleteItem(props.index);
+          }
+        }}
       />
 
       <div className="button-group">
