@@ -6,8 +6,8 @@ import { faSquare } from "@fortawesome/free-solid-svg-icons";
 const ActionItems = (props) => {
   const {
     actionItems,
-    addItem,
     focus,
+    addItem,
     deleteItem,
     updateItem,
     moveItemRight,

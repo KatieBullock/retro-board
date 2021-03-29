@@ -9,6 +9,7 @@ function App() {
   const [toImprove, setToImprove] = useState([]);
   const [actionItems, setActionItems] = useState([]);
   const [focus, setFocus] = useState(false);
+  const [isRow, setIsRow] = useState(true);
 
   const addItem = () => {
     return {
@@ -107,19 +108,26 @@ function App() {
     };
   };
 
+  const toggleLayout = () => {
+    setIsRow(!isRow);
+  };
+
   return (
     <div className="App">
       <main className="content row">
         <h1>Retro Board</h1>
-        <div>
-          Layout &nbsp;<button className="button button-default">Column</button>
+        <div className="toggle-layout">
+          Layout &nbsp;
+          <button className="button button-default" onClick={toggleLayout}>
+            {isRow ? "Column" : "Row"}
+          </button>
         </div>
 
-        <div className="RetroApp row">
+        <div className={`RetroApp ${isRow ? "row" : "column"}`}>
           <WentWell
             wentWell={wentWell}
-            addItem={addItem().wentWell}
             focus={focus}
+            addItem={addItem().wentWell}
             deleteItem={deleteItem().wentWell}
             updateItem={updateItem().wentWell}
             moveItemRight={moveItemRight().wentWell}
@@ -127,8 +135,8 @@ function App() {
           />
           <ToImprove
             toImprove={toImprove}
-            addItem={addItem().toImprove}
             focus={focus}
+            addItem={addItem().toImprove}
             deleteItem={deleteItem().toImprove}
             updateItem={updateItem().toImprove}
             moveItemRight={moveItemRight().toImprove}
@@ -136,8 +144,8 @@ function App() {
           />
           <ActionItems
             actionItems={actionItems}
-            addItem={addItem().actionItems}
             focus={focus}
+            addItem={addItem().actionItems}
             deleteItem={deleteItem().actionItems}
             updateItem={updateItem().actionItems}
             moveItemRight={moveItemRight().actionItems}

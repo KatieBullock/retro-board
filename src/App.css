@@ -76,6 +76,11 @@ html {
     padding: 0 0.25rem;
   }
 }
+@media (max-width: 640px) {
+  .toggle-layout {
+    display: none;
+  }
+}
 .RetroCategory {
   flex: 1 1;
 }
