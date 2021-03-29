@@ -3,7 +3,6 @@ import { useState } from "react";
 import WentWell from "./components/WentWell";
 import ToImprove from "./components/ToImprove";
 import ActionItems from "./components/ActionItems";
-import RetroCard from "./components/RetroCard";
 
 function App() {
   const [wentWell, setWentWell] = useState([]);
@@ -117,57 +116,33 @@ function App() {
         </div>
 
         <div className="RetroApp row">
-          <WentWell addItem={addItem().wentWell}>
-            {wentWell.map((item, index) => {
-              return (
-                <div key={`went-well-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    focus={focus}
-                    deleteItem={deleteItem().wentWell}
-                    updateItem={updateItem().wentWell}
-                    moveItemRight={moveItemRight().wentWell}
-                    moveItemLeft={moveItemLeft().wentWell}
-                  />
-                </div>
-              );
-            })}
-          </WentWell>
-          <ToImprove addItem={addItem().toImprove}>
-            {toImprove.map((item, index) => {
-              return (
-                <div key={`to-improve-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    focus={focus}
-                    deleteItem={deleteItem().toImprove}
-                    updateItem={updateItem().toImprove}
-                    moveItemRight={moveItemRight().toImprove}
-                    moveItemLeft={moveItemLeft().toImprove}
-                  />
-                </div>
-              );
-            })}
-          </ToImprove>
-          <ActionItems addItem={addItem().actionItems}>
-            {actionItems.map((item, index) => {
-              return (
-                <div key={`action-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    focus={focus}
-                    deleteItem={deleteItem().actionItems}
-                    updateItem={updateItem().actionItems}
-                    moveItemRight={moveItemRight().actionItems}
-                    moveItemLeft={moveItemLeft().actionItems}
-                  />
-                </div>
-              );
-            })}
-          </ActionItems>
+          <WentWell
+            wentWell={wentWell}
+            addItem={addItem().wentWell}
+            focus={focus}
+            deleteItem={deleteItem().wentWell}
+            updateItem={updateItem().wentWell}
+            moveItemRight={moveItemRight().wentWell}
+            moveItemLeft={moveItemLeft().wentWell}
+          />
+          <ToImprove
+            toImprove={toImprove}
+            addItem={addItem().toImprove}
+            focus={focus}
+            deleteItem={deleteItem().toImprove}
+            updateItem={updateItem().toImprove}
+            moveItemRight={moveItemRight().toImprove}
+            moveItemLeft={moveItemLeft().toImprove}
+          />
+          <ActionItems
+            actionItems={actionItems}
+            addItem={addItem().actionItems}
+            focus={focus}
+            deleteItem={deleteItem().actionItems}
+            updateItem={updateItem().actionItems}
+            moveItemRight={moveItemRight().actionItems}
+            moveItemLeft={moveItemLeft().actionItems}
+          />
         </div>
       </main>
     </div>

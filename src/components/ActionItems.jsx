@@ -1,3 +1,4 @@
+import RetroCard from "./RetroCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,7 +18,21 @@ const ActionItems = (props) => {
       >
         +
       </button>
-      {props.children}
+      {props.actionItems.map((item, index) => {
+        return (
+          <div key={`action-item-${index}`}>
+            <RetroCard
+              item={item}
+              index={index}
+              focus={props.focus}
+              deleteItem={props.deleteItem}
+              updateItem={props.updateItem}
+              moveItemRight={props.moveItemRight}
+              moveItemLeft={props.moveItemLeft}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
