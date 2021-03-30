@@ -8,30 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const RetroCard = (props) => {
-  // const dragStart = (e) => {
-  //   const target = e.target;
-  //   console.log(target.id);
-
-  //   e.dataTransfer.setData("card_id", target.id);
-
-  //   setTimeout(() => {
-  //     target.style.display = "none";
-  //   }, 0);
-  // };
-
-  // const dragOver = (e) => {
-  //   e.stopPropagation();
-  // };
-
   return (
-    <div
-      className="RetroCard"
-      aria-label="Retro card"
-      // id={props.id}
-      // draggable="true"
-      // onDragStart={dragStart}
-      // onDragOver={dragOver}
-    >
+    <div className="RetroCard" aria-label="Retro card">
       <textarea
         className="textbox"
         placeholder="Enter text here"

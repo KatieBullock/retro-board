@@ -129,14 +129,8 @@ function App() {
           >
             {wentWell.map((item, index) => {
               return (
-                <div
-                  key={`went-well-item-${index}`}
-                  // onDrop={drop}
-                  // onDragOver={dragOver}
-                >
+                <div key={`went-well-item-${index}`}>
                   <RetroCard
-                    // id={`card-${index}`}
-                    // draggable="true"
                     item={item}
                     index={index}
                     wentWell={wentWell}
@@ -157,14 +151,8 @@ function App() {
           >
             {toImprove.map((item, index) => {
               return (
-                <div
-                  key={`to-improve-item-${index}`}
-                  // onDrop={drop}
-                  // onDragOver={dragOver}
-                >
+                <div key={`to-improve-item-${index}`}>
                   <RetroCard
-                    // id={`card-${index}`}
-                    // draggable="true"
                     item={item}
                     index={index}
                     toImprove={toImprove}
@@ -185,14 +173,8 @@ function App() {
           >
             {actionItems.map((item, index) => {
               return (
-                <div
-                  key={`action-item-${index}`}
-                  // onDrop={drop}
-                  // onDragOver={dragOver}
-                >
+                <div key={`action-item-${index}`}>
                   <RetroCard
-                    // id={`card-${index}`}
-                    // draggable="true"
                     item={item}
                     index={index}
                     actionItems={actionItems}
