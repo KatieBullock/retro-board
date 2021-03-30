@@ -1,8 +1,7 @@
-import "./App.css";
 import { useState } from "react";
-import WentWell from "./components/WentWell";
-import ToImprove from "./components/ToImprove";
-import ActionItems from "./components/ActionItems";
+import "./App.css";
+import Board from "./components/Board";
+import RetroCard from "./components/RetroCard";
 
 function App() {
   const [wentWell, setWentWell] = useState([]);
@@ -122,35 +121,91 @@ function App() {
             {isRow ? "Column" : "Row"}
           </button>
         </div>
-
         <div className={`RetroApp ${isRow ? "row" : "column"}`}>
-          <WentWell
-            wentWell={wentWell}
-            focus={focus}
+          <Board
+            className="RetroCategory RetroCategory-1"
+            category="Went Well"
             addItem={addItem().wentWell}
-            deleteItem={deleteItem().wentWell}
-            updateItem={updateItem().wentWell}
-            moveItemRight={moveItemRight().wentWell}
-            moveItemLeft={moveItemLeft().wentWell}
-          />
-          <ToImprove
-            toImprove={toImprove}
-            focus={focus}
+          >
+            {wentWell.map((item, index) => {
+              return (
+                <div
+                  key={`went-well-item-${index}`}
+                  // onDrop={drop}
+                  // onDragOver={dragOver}
+                >
+                  <RetroCard
+                    // id={`card-${index}`}
+                    // draggable="true"
+                    item={item}
+                    index={index}
+                    wentWell={wentWell}
+                    focus={focus}
+                    deleteItem={deleteItem().wentWell}
+                    updateItem={updateItem().wentWell}
+                    moveItemRight={moveItemRight().wentWell}
+                    moveItemLeft={moveItemLeft().wentWell}
+                  />
+                </div>
+              );
+            })}
+          </Board>
+          <Board
+            className="RetroCategory RetroCategory-2"
+            category="To Improve"
             addItem={addItem().toImprove}
-            deleteItem={deleteItem().toImprove}
-            updateItem={updateItem().toImprove}
-            moveItemRight={moveItemRight().toImprove}
-            moveItemLeft={moveItemLeft().toImprove}
-          />
-          <ActionItems
-            actionItems={actionItems}
-            focus={focus}
+          >
+            {toImprove.map((item, index) => {
+              return (
+                <div
+                  key={`to-improve-item-${index}`}
+                  // onDrop={drop}
+                  // onDragOver={dragOver}
+                >
+                  <RetroCard
+                    // id={`card-${index}`}
+                    // draggable="true"
+                    item={item}
+                    index={index}
+                    toImprove={toImprove}
+                    focus={focus}
+                    deleteItem={deleteItem().toImprove}
+                    updateItem={updateItem().toImprove}
+                    moveItemRight={moveItemRight().toImprove}
+                    moveItemLeft={moveItemLeft().toImprove}
+                  />
+                </div>
+              );
+            })}
+          </Board>
+          <Board
+            className="RetroCategory RetroCategory-3"
+            category="Action Items"
             addItem={addItem().actionItems}
-            deleteItem={deleteItem().actionItems}
-            updateItem={updateItem().actionItems}
-            moveItemRight={moveItemRight().actionItems}
-            moveItemLeft={moveItemLeft().actionItems}
-          />
+          >
+            {actionItems.map((item, index) => {
+              return (
+                <div
+                  key={`action-item-${index}`}
+                  // onDrop={drop}
+                  // onDragOver={dragOver}
+                >
+                  <RetroCard
+                    // id={`card-${index}`}
+                    // draggable="true"
+                    item={item}
+                    index={index}
+                    actionItems={actionItems}
+                    focus={focus}
+                    deleteItem={deleteItem().actionItems}
+                    updateItem={updateItem().actionItems}
+                    moveItemRight={moveItemRight().actionItems}
+                    moveItemLeft={moveItemLeft().actionItems}
+                  />
+                </div>
+              );
+            })}
+          </Board>
         </div>
       </main>
     </div>
