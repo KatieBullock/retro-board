@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Board from "./components/Board";
 import RetroCard from "./components/RetroCard";
 
@@ -118,7 +120,11 @@ function App() {
         <div className="toggle-layout">
           Layout &nbsp;
           <button className="button button-default" onClick={toggleLayout}>
-            {isRow ? "Column" : "Row"}
+            {isRow ? (
+              <FontAwesomeIcon icon={faBars} />
+            ) : (
+              <FontAwesomeIcon icon={faBars} rotation={90} />
+            )}
           </button>
         </div>
         <div className={`RetroApp ${isRow ? "row" : "column"}`}>
@@ -129,18 +135,17 @@ function App() {
           >
             {wentWell.map((item, index) => {
               return (
-                <div key={`went-well-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    wentWell={wentWell}
-                    focus={focus}
-                    deleteItem={deleteItem().wentWell}
-                    updateItem={updateItem().wentWell}
-                    moveItemRight={moveItemRight().wentWell}
-                    moveItemLeft={moveItemLeft().wentWell}
-                  />
-                </div>
+                <RetroCard
+                  key={`went-well-item-${index}`}
+                  item={item}
+                  index={index}
+                  wentWell={wentWell}
+                  focus={focus}
+                  deleteItem={deleteItem().wentWell}
+                  updateItem={updateItem().wentWell}
+                  moveItemRight={moveItemRight().wentWell}
+                  moveItemLeft={moveItemLeft().wentWell}
+                />
               );
             })}
           </Board>
@@ -151,18 +156,17 @@ function App() {
           >
             {toImprove.map((item, index) => {
               return (
-                <div key={`to-improve-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    toImprove={toImprove}
-                    focus={focus}
-                    deleteItem={deleteItem().toImprove}
-                    updateItem={updateItem().toImprove}
-                    moveItemRight={moveItemRight().toImprove}
-                    moveItemLeft={moveItemLeft().toImprove}
-                  />
-                </div>
+                <RetroCard
+                  key={`to-improve-item-${index}`}
+                  item={item}
+                  index={index}
+                  toImprove={toImprove}
+                  focus={focus}
+                  deleteItem={deleteItem().toImprove}
+                  updateItem={updateItem().toImprove}
+                  moveItemRight={moveItemRight().toImprove}
+                  moveItemLeft={moveItemLeft().toImprove}
+                />
               );
             })}
           </Board>
@@ -173,18 +177,17 @@ function App() {
           >
             {actionItems.map((item, index) => {
               return (
-                <div key={`action-item-${index}`}>
-                  <RetroCard
-                    item={item}
-                    index={index}
-                    actionItems={actionItems}
-                    focus={focus}
-                    deleteItem={deleteItem().actionItems}
-                    updateItem={updateItem().actionItems}
-                    moveItemRight={moveItemRight().actionItems}
-                    moveItemLeft={moveItemLeft().actionItems}
-                  />
-                </div>
+                <RetroCard
+                  key={`action-item-${index}`}
+                  item={item}
+                  index={index}
+                  actionItems={actionItems}
+                  focus={focus}
+                  deleteItem={deleteItem().actionItems}
+                  updateItem={updateItem().actionItems}
+                  moveItemRight={moveItemRight().actionItems}
+                  moveItemLeft={moveItemLeft().actionItems}
+                />
               );
             })}
           </Board>
