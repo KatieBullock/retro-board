@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
   faAngleRight,
-  faTimesCircle,
-  faThumbsUp,
-  faThumbsDown,
+  faTrashAlt,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
 const RetroCard = (props) => {
@@ -16,7 +15,7 @@ const RetroCard = (props) => {
         aria-label="Enter text here"
         rows="1"
         autoFocus={props.focus}
-        value={props.item}
+        value={props.item.item}
         onChange={(e) => props.updateItem(e.target.value, props.index)}
         onBlur={(e) => {
           if (e.target.value === "") {
@@ -40,16 +39,18 @@ const RetroCard = (props) => {
           title="Delete"
           onClick={() => props.deleteItem(props.index)}
         >
-          <FontAwesomeIcon icon={faTimesCircle} /> Delete
+          <FontAwesomeIcon icon={faTrashAlt} /> Delete
         </button>
-        <div>
-          <button type="button" className="button" title="Like">
-            <FontAwesomeIcon icon={faThumbsUp} /> 5
-          </button>
-          <button type="button" className="button" title="Dislike">
-            <FontAwesomeIcon icon={faThumbsDown} /> 0
-          </button>
-        </div>
+        <button
+          type="button"
+          className="button"
+          title="Like"
+          onClick={() => {
+            props.updateLikes(props.index);
+          }}
+        >
+          <FontAwesomeIcon icon={faHeart} /> {props.item.likes}
+        </button>
         <button
           type="button"
           className="button button-right"

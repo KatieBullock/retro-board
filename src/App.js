@@ -6,24 +6,30 @@ import Board from "./components/Board";
 import RetroCard from "./components/RetroCard";
 
 function App() {
-  const [wentWell, setWentWell] = useState([]);
-  const [toImprove, setToImprove] = useState([]);
-  const [actionItems, setActionItems] = useState([]);
+  const [wentWell, setWentWell] = useState([
+    { item: "Add something that was succesful!", likes: 0 },
+  ]);
+  const [toImprove, setToImprove] = useState([
+    { item: "Add something that needs attention.", likes: 0 },
+  ]);
+  const [actionItems, setActionItems] = useState([
+    { item: "Add something that you're working on.", likes: 0 },
+  ]);
   const [focus, setFocus] = useState(false);
   const [isRow, setIsRow] = useState(true);
 
   const addItem = () => {
     return {
       wentWell: () => {
-        setWentWell([...wentWell, ""]);
+        setWentWell([...wentWell, { item: "", likes: 0 }]);
         setFocus(true);
       },
       toImprove: () => {
-        setToImprove([...toImprove, ""]);
+        setToImprove([...toImprove, { item: "", likes: 0 }]);
         setFocus(true);
       },
       actionItems: () => {
-        setActionItems([...actionItems, ""]);
+        setActionItems([...actionItems, { item: "", likes: 0 }]);
         setFocus(true);
       },
     };
@@ -33,17 +39,37 @@ function App() {
     return {
       wentWell: (userInput, index) => {
         const newWentWell = [...wentWell];
-        newWentWell[index] = userInput;
+        newWentWell[index].item = userInput;
         setWentWell(newWentWell);
       },
       toImprove: (userInput, index) => {
         const newToImprove = [...toImprove];
-        newToImprove[index] = userInput;
+        newToImprove[index].item = userInput;
         setToImprove(newToImprove);
       },
       actionItems: (userInput, index) => {
         const newActionItem = [...actionItems];
-        newActionItem[index] = userInput;
+        newActionItem[index].item = userInput;
+        setActionItems(newActionItem);
+      },
+    };
+  };
+
+  const updateLikes = () => {
+    return {
+      wentWell: (index) => {
+        const newWentWell = [...wentWell];
+        newWentWell[index].likes += 1;
+        setWentWell(newWentWell);
+      },
+      toImprove: (index) => {
+        const newToImprove = [...toImprove];
+        newToImprove[index].likes += 1;
+        setToImprove(newToImprove);
+      },
+      actionItems: (index) => {
+        const newActionItem = [...actionItems];
+        newActionItem[index].likes += 1;
         setActionItems(newActionItem);
       },
     };
@@ -139,10 +165,11 @@ function App() {
                   key={`went-well-item-${index}`}
                   item={item}
                   index={index}
-                  wentWell={wentWell}
                   focus={focus}
-                  deleteItem={deleteItem().wentWell}
+                  wentWell={wentWell}
                   updateItem={updateItem().wentWell}
+                  updateLikes={updateLikes().wentWell}
+                  deleteItem={deleteItem().wentWell}
                   moveItemRight={moveItemRight().wentWell}
                   moveItemLeft={moveItemLeft().wentWell}
                 />
@@ -160,10 +187,11 @@ function App() {
                   key={`to-improve-item-${index}`}
                   item={item}
                   index={index}
-                  toImprove={toImprove}
                   focus={focus}
-                  deleteItem={deleteItem().toImprove}
+                  toImprove={toImprove}
                   updateItem={updateItem().toImprove}
+                  updateLikes={updateLikes().toImprove}
+                  deleteItem={deleteItem().toImprove}
                   moveItemRight={moveItemRight().toImprove}
                   moveItemLeft={moveItemLeft().toImprove}
                 />
@@ -181,10 +209,11 @@ function App() {
                   key={`action-item-${index}`}
                   item={item}
                   index={index}
-                  actionItems={actionItems}
                   focus={focus}
-                  deleteItem={deleteItem().actionItems}
+                  actionItems={actionItems}
                   updateItem={updateItem().actionItems}
+                  updateLikes={updateLikes().actionItems}
+                  deleteItem={deleteItem().actionItems}
                   moveItemRight={moveItemRight().actionItems}
                   moveItemLeft={moveItemLeft().actionItems}
                 />
