@@ -2,9 +2,7 @@ import AddButton from "./AddButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare } from "@fortawesome/free-solid-svg-icons";
 
-const Board = (props) => {
-  const { className, category, addItem } = props;
-
+const Board = ({ className, category, addItem, children }) => {
   return (
     <div className={className}>
       <h2>
@@ -12,7 +10,7 @@ const Board = (props) => {
         {category}
       </h2>
       <AddButton addItem={addItem} />
-      {props.children}
+      {children}
     </div>
   );
 };

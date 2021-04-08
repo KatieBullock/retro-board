@@ -1,11 +1,11 @@
-const AddButton = (props) => {
+const AddButton = ({ addItem }) => {
   return (
     <button
       type="button"
       className="ButtonAdd button button-default"
       aria-label="Add new card"
       title="Add new card"
-      onClick={() => props.addItem()}
+      onClick={() => addItem()}
     >
       +
     </button>

@@ -7,7 +7,7 @@ import RetroCard from "./components/RetroCard";
 
 function App() {
   const [wentWell, setWentWell] = useState([
-    { item: "Add something that was succesful!", likes: 0 },
+    { item: "Add something that was successful!", likes: 0 },
   ]);
   const [toImprove, setToImprove] = useState([
     { item: "Add something that needs attention.", likes: 0 },
