@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/klbullock/]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+  <h3 align="center">Retro Board</h3>
+  <p align="center">
+    An awesome retrospective board to help you reflect on what went well and what needs improvement!
+    <br />
+    <a href="">View Demo</a>
+  </p>
+</p>
 
-## Available Scripts
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#authors">Authors</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-In the project directory, you can run:
+## About The Project
 
-### `yarn start`
+Retrospective boards are extremely useful within the Scrum workflow, particularly during the last of the four basic ceremonies for each sprint or software release, the sprint retrospective. This app allows users to manage their projects by catergozing what went well, what needs improvement, and what steps to take next within color-coded and easy to read boards!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Built With
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [React](https://reactjs.org/)
 
-### `yarn test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+These instructions will get a copy of the project up and running on your local machine.
 
-### `yarn build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+- yarn
+  ```sh
+  npm install --g yarn
+  ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/KatieBullock/retro-board.git
+   ```
+2. Install packages
+   ```sh
+   yarn install
+   ```
+3. Run the app
+   ```sh
+   yarn start
+   ```
 
-### `yarn eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Users can add an item card to a category by clicking the '+' button at the top of the category. They will immediately be prompted to type in a task. After the item has been added, the users have the ability to move the card to another category or delete the card altogether by clicking the corresponding buttons on the bottom of the card.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Oftentimes, retro boards are used in group settings to discuss project goals. To encourage input from team members, there is a heart button on each card. Team members can vote on the items they believe are the most important to focus on or just let their colleagues know how happy they are that a particularly difficult task was accomplished.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Depending on the style of the meeting, users can change the layout style from columns to rows by clicking on the button in the upper left.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Authors
 
-## Learn More
+- **Katie Bullock** - _Developed App_ -
+  [KatieBullock](https://github.com/KatieBullock)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Thank you to Matina Patsos and Jamal Taylor with Albany Can Code for guidance and support on this project.
