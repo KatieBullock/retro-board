@@ -3,9 +3,10 @@
   <p align="center">
     An awesome retrospective board to help you reflect on what went well and what needs improvement!
     <br />
-    <a href="">View Demo</a>
+    <a href="https://katiebullock.github.io/retro-board/">View Demo</a>
   </p>
 </p>
+<br />
 
 <details open="open">
   <summary>Table of Contents</summary>
