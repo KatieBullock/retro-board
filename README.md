@@ -1,4 +1,3 @@
-<br />
   <h1 align="center">Retro Board</h1>
   <p align="center">
     An awesome retrospective board to help you reflect on what went well and what needs improvement!
