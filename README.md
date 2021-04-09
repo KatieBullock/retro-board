@@ -1,7 +1,5 @@
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/klbullock/]
-
 <br />
-  <h3 align="center">Retro Board</h3>
+  <h1 align="center">Retro Board</h1>
   <p align="center">
     An awesome retrospective board to help you reflect on what went well and what needs improvement!
     <br />
@@ -33,7 +31,7 @@
 
 ## About The Project
 
-Retrospective boards are extremely useful within the Scrum workflow, particularly during the last of the four basic ceremonies for each sprint or software release, the sprint retrospective. This app allows users to manage their projects by catergozing what went well, what needs improvement, and what steps to take next within color-coded and easy to read boards!
+Retrospective boards are extremely useful within the Scrum workflow, particularly during the last of the four basic ceremonies for each sprint or software release, the sprint retrospective. This app allows users to manage their projects by categorizing what went well, what needs improvement, and what steps to take next within color-coded and easy to read boards!
 
 ### Built With
 
