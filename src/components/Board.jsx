@@ -1,4 +1,4 @@
-import AddButton from "./AddButton";
+import AddButton from "./buttons/AddButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +9,7 @@ const Board = ({ className, category, addItem, children }) => {
         <FontAwesomeIcon icon={faSquare} className="category-color" />
         {category}
       </h2>
-      <AddButton addItem={addItem} />
+      <AddButton addItem={addItem} category={category} />
       {children}
     </div>
   );

@@ -1,11 +1,11 @@
-const AddButton = ({ addItem }) => {
+const AddButton = ({ addItem, category }) => {
   return (
     <button
       type="button"
       className="ButtonAdd button button-default"
       aria-label="Add new card"
       title="Add new card"
-      onClick={() => addItem()}
+      onClick={() => addItem(category)}
     >
       +
     </button>

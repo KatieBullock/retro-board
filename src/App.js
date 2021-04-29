@@ -6,133 +6,52 @@ import Board from "./components/Board";
 import RetroCard from "./components/RetroCard";
 
 function App() {
-  const [wentWell, setWentWell] = useState([
-    { item: "Add something that was successful!", likes: 0 },
-  ]);
-  const [toImprove, setToImprove] = useState([
-    { item: "Add something that needs attention.", likes: 0 },
-  ]);
-  const [actionItems, setActionItems] = useState([
-    { item: "Add something that you're working on.", likes: 0 },
+  const [cards, setCards] = useState([
+    {
+      item: "Add something that was successful!",
+      likes: 0,
+      category: "Went Well",
+    },
+    {
+      item: "Add something that needs attention.",
+      likes: 0,
+      category: "To Improve",
+    },
+    {
+      item: "Add something that you're working on.",
+      likes: 0,
+      category: "Action Items",
+    },
   ]);
   const [focus, setFocus] = useState(false);
   const [isRow, setIsRow] = useState(true);
 
-  const addItem = () => {
-    return {
-      wentWell: () => {
-        setWentWell([...wentWell, { item: "", likes: 0 }]);
-        setFocus(true);
-      },
-      toImprove: () => {
-        setToImprove([...toImprove, { item: "", likes: 0 }]);
-        setFocus(true);
-      },
-      actionItems: () => {
-        setActionItems([...actionItems, { item: "", likes: 0 }]);
-        setFocus(true);
-      },
-    };
+  const addItem = (category) => {
+    setCards([...cards, { item: "", likes: 0, category: category }]);
+    setFocus(true);
   };
 
-  const updateItem = () => {
-    return {
-      wentWell: (userInput, index) => {
-        const newWentWell = [...wentWell];
-        newWentWell[index].item = userInput;
-        setWentWell(newWentWell);
-      },
-      toImprove: (userInput, index) => {
-        const newToImprove = [...toImprove];
-        newToImprove[index].item = userInput;
-        setToImprove(newToImprove);
-      },
-      actionItems: (userInput, index) => {
-        const newActionItem = [...actionItems];
-        newActionItem[index].item = userInput;
-        setActionItems(newActionItem);
-      },
-    };
+  const updateItem = (userInput, index) => {
+    const newCards = [...cards];
+    newCards[index].item = userInput;
+    setCards(newCards);
   };
 
-  const updateLikes = () => {
-    return {
-      wentWell: (index) => {
-        const newWentWell = [...wentWell];
-        newWentWell[index].likes += 1;
-        setWentWell(newWentWell);
-      },
-      toImprove: (index) => {
-        const newToImprove = [...toImprove];
-        newToImprove[index].likes += 1;
-        setToImprove(newToImprove);
-      },
-      actionItems: (index) => {
-        const newActionItem = [...actionItems];
-        newActionItem[index].likes += 1;
-        setActionItems(newActionItem);
-      },
-    };
+  const updateLikes = (index) => {
+    const newCards = [...cards];
+    newCards[index].likes += 1;
+    setCards(newCards);
   };
 
-  const deleteItem = () => {
-    return {
-      wentWell: (index) => {
-        setWentWell(
-          wentWell.filter((item, currentIndex) => currentIndex !== index)
-        );
-      },
-      toImprove: (index) => {
-        setToImprove(
-          toImprove.filter((item, currentIndex) => currentIndex !== index)
-        );
-      },
-      actionItems: (index) => {
-        setActionItems(
-          actionItems.filter((item, currentIndex) => currentIndex !== index)
-        );
-      },
-    };
+  const deleteItem = (index) => {
+    setCards(cards.filter((card, currentIndex) => currentIndex !== index));
   };
 
-  const moveItemRight = () => {
-    return {
-      wentWell: (index) => {
-        deleteItem().wentWell(index);
-        setToImprove([...toImprove, wentWell[index]]);
-        setFocus(false);
-      },
-      toImprove: (index) => {
-        deleteItem().toImprove(index);
-        setActionItems([...actionItems, toImprove[index]]);
-        setFocus(false);
-      },
-      actionItems: (index) => {
-        deleteItem().actionItems(index);
-        setWentWell([...wentWell, actionItems[index]]);
-        setFocus(false);
-      },
-    };
-  };
-
-  const moveItemLeft = () => {
-    return {
-      wentWell: (index) => {
-        deleteItem().wentWell(index);
-        setActionItems([...actionItems, wentWell[index]]);
-        setFocus(false);
-      },
-      toImprove: (index) => {
-        deleteItem().toImprove(index);
-        setWentWell([...wentWell, toImprove[index]]);
-        setFocus(false);
-      },
-      actionItems: (index) => {
-        deleteItem().actionItems(index);
-        setToImprove([...toImprove, actionItems[index]]);
-        setFocus(false);
-      },
-    };
+  const moveItem = (newCategory, index) => {
+    cards[index].category = newCategory;
+    cards.push(cards.splice(index, 1)[0]);
+    setCards([...cards]);
+    setFocus(false);
   };
 
   const toggleLayout = () => {
@@ -157,67 +76,70 @@ function App() {
           <Board
             className="RetroCategory RetroCategory-1"
             category="Went Well"
-            addItem={addItem().wentWell}
+            addItem={addItem}
           >
-            {wentWell.map((item, index) => {
-              return (
-                <RetroCard
-                  key={`went-well-item-${index}`}
-                  item={item}
-                  index={index}
-                  focus={focus}
-                  wentWell={wentWell}
-                  updateItem={updateItem().wentWell}
-                  updateLikes={updateLikes().wentWell}
-                  deleteItem={deleteItem().wentWell}
-                  moveItemRight={moveItemRight().wentWell}
-                  moveItemLeft={moveItemLeft().wentWell}
-                />
-              );
+            {cards.map((card, index) => {
+              if (card.category === "Went Well")
+                return (
+                  <RetroCard
+                    key={`went-well-item-${index}`}
+                    card={card}
+                    index={index}
+                    focus={focus}
+                    updateItem={updateItem}
+                    deleteItem={deleteItem}
+                    updateLikes={updateLikes}
+                    moveItem={moveItem}
+                    leftCategory="Action Items"
+                    rightCategory="To Improve"
+                  />
+                );
             })}
           </Board>
           <Board
             className="RetroCategory RetroCategory-2"
             category="To Improve"
-            addItem={addItem().toImprove}
+            addItem={addItem}
           >
-            {toImprove.map((item, index) => {
-              return (
-                <RetroCard
-                  key={`to-improve-item-${index}`}
-                  item={item}
-                  index={index}
-                  focus={focus}
-                  toImprove={toImprove}
-                  updateItem={updateItem().toImprove}
-                  updateLikes={updateLikes().toImprove}
-                  deleteItem={deleteItem().toImprove}
-                  moveItemRight={moveItemRight().toImprove}
-                  moveItemLeft={moveItemLeft().toImprove}
-                />
-              );
+            {cards.map((card, index) => {
+              if (card.category === "To Improve")
+                return (
+                  <RetroCard
+                    key={`to-improve-item-${index}`}
+                    card={card}
+                    index={index}
+                    focus={focus}
+                    updateItem={updateItem}
+                    deleteItem={deleteItem}
+                    updateLikes={updateLikes}
+                    moveItem={moveItem}
+                    leftCategory="Went Well"
+                    rightCategory="Action Items"
+                  />
+                );
             })}
           </Board>
           <Board
             className="RetroCategory RetroCategory-3"
             category="Action Items"
-            addItem={addItem().actionItems}
+            addItem={addItem}
           >
-            {actionItems.map((item, index) => {
-              return (
-                <RetroCard
-                  key={`action-item-${index}`}
-                  item={item}
-                  index={index}
-                  focus={focus}
-                  actionItems={actionItems}
-                  updateItem={updateItem().actionItems}
-                  updateLikes={updateLikes().actionItems}
-                  deleteItem={deleteItem().actionItems}
-                  moveItemRight={moveItemRight().actionItems}
-                  moveItemLeft={moveItemLeft().actionItems}
-                />
-              );
+            {cards.map((card, index) => {
+              if (card.category === "Action Items")
+                return (
+                  <RetroCard
+                    key={`action-item-${index}`}
+                    card={card}
+                    index={index}
+                    focus={focus}
+                    updateItem={updateItem}
+                    deleteItem={deleteItem}
+                    updateLikes={updateLikes}
+                    moveItem={moveItem}
+                    leftCategory="To Improve"
+                    rightCategory="Went Well"
+                  />
+                );
             })}
           </Board>
         </div>

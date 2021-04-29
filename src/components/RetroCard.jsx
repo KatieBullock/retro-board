@@ -1,10 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleLeft,
-  faAngleRight,
-  faTrashAlt,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import DeleteButton from "./buttons/DeleteButton";
+import LikeButton from "./buttons/LikeButton";
+import LeftButton from "./buttons/LeftButton";
+import RightButton from "./buttons/RightButton";
 
 const RetroCard = (props) => {
   return (
@@ -15,7 +12,7 @@ const RetroCard = (props) => {
         aria-label="Enter text here"
         rows="1"
         autoFocus={props.focus}
-        value={props.item.item}
+        value={props.card.item}
         onChange={(e) => props.updateItem(e.target.value, props.index)}
         onBlur={(e) => {
           if (e.target.value === "") {
@@ -25,40 +22,22 @@ const RetroCard = (props) => {
       />
 
       <div className="button-group">
-        <button
-          type="button"
-          className="button button-left"
-          title="Move left"
-          onClick={() => props.moveItemLeft(props.index)}
-        >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
-        <button
-          type="button"
-          className="button button-delete"
-          title="Delete"
-          onClick={() => props.deleteItem(props.index)}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} /> Delete
-        </button>
-        <button
-          type="button"
-          className="button"
-          title="Like"
-          onClick={() => {
-            props.updateLikes(props.index);
-          }}
-        >
-          <FontAwesomeIcon icon={faHeart} /> {props.item.likes}
-        </button>
-        <button
-          type="button"
-          className="button button-right"
-          title="Move right"
-          onClick={() => props.moveItemRight(props.index)}
-        >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </button>
+        <LeftButton
+          moveItem={props.moveItem}
+          leftCategory={props.leftCategory}
+          index={props.index}
+        />
+        <DeleteButton deleteItem={props.deleteItem} index={props.index} />
+        <LikeButton
+          updateLikes={props.updateLikes}
+          card={props.card}
+          index={props.index}
+        />
+        <RightButton
+          moveItem={props.moveItem}
+          rightCategory={props.rightCategory}
+          index={props.index}
+        />
       </div>
     </div>
   );
