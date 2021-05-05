@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-const LikeButton = ({ updateLikes, card, index }) => {
+const LikeButton = ({ updateLikes, card }) => {
   return (
     <button
       type="button"
       className="button"
       title="Like"
       onClick={() => {
-        updateLikes(index);
+        updateLikes();
       }}
     >
       <FontAwesomeIcon icon={faHeart} /> {card.likes}
