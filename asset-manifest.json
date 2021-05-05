@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/retro-board/static/css/main.5372d708.chunk.css",
-    "main.js": "/retro-board/static/js/main.95821fec.chunk.js",
-    "main.js.map": "/retro-board/static/js/main.95821fec.chunk.js.map",
+    "main.js": "/retro-board/static/js/main.99d59ba9.chunk.js",
+    "main.js.map": "/retro-board/static/js/main.99d59ba9.chunk.js.map",
     "runtime-main.js": "/retro-board/static/js/runtime-main.ea3a476f.js",
     "runtime-main.js.map": "/retro-board/static/js/runtime-main.ea3a476f.js.map",
     "static/js/2.ff4286e3.chunk.js": "/retro-board/static/js/2.ff4286e3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ea3a476f.js",
     "static/js/2.ff4286e3.chunk.js",
     "static/css/main.5372d708.chunk.css",
-    "static/js/main.95821fec.chunk.js"
+    "static/js/main.99d59ba9.chunk.js"
   ]
 }
