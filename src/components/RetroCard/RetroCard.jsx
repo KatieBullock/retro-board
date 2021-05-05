@@ -18,6 +18,7 @@ const RetroCard = (props) => {
 
   const deleteItem = (index) => {
     setCards(cards.filter((card, currentIndex) => currentIndex !== index));
+    setFocus(false);
   };
 
   const moveItem = (newCategory, index) => {
